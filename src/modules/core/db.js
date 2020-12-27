@@ -4,6 +4,7 @@ export const dbConnect = () => {
   mongoose.connect('mongodb://localhost/node-express-server', {
     useUnifiedTopology: true,
     useNewUrlParser: true,
+    useCreateIndex: true,
   });
 
   const db = mongoose.connection;
