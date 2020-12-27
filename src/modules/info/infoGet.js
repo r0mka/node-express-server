@@ -1,6 +1,6 @@
 import { get } from 'lodash';
 
-export const info = (req, res) => {
+export const infoGet = (req, res) => {
   const obj = {
     name: 'roman nikolaenkov web dev',
   };
