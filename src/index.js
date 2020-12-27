@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express';
+import { get } from 'lodash';
 
 const app = express();
 
@@ -9,7 +10,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/info', (req, res) => {
-  res.send('Info route');
+  const obj = {
+    name: 'roman nikolaenkov web dev',
+  };
+
+  const name = get(obj, 'name', 'unknown');
+
+  res.send(`Info route ${name}`);
 });
 
 app.listen(process.env.PORT || PORT, () => console.log('Server running on port: ', PORT));
