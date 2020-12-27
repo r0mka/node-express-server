@@ -12,6 +12,9 @@ const UserSchema = new Schema({
     required: true,
     select: false, // select false means we exclude that from showing
   },
+  age: {
+    type: String,
+  },
 });
 
 UserSchema.index({ email: 1 }, { unique: true });
