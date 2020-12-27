@@ -6,7 +6,7 @@ const app = express();
 const PORT = 5000;
 
 app.get('/', (req, res) => {
-  res.send('Hello from server');
+  res.json({ msg: 'Hello from server' });
 });
 
 app.get('/info', (req, res) => {
@@ -16,7 +16,13 @@ app.get('/info', (req, res) => {
 
   const name = get(obj, 'name', 'unknown');
 
-  res.send(`Info route ${name}`);
+  res.json({ msg: `Info route ${name}` });
 });
 
-app.listen(process.env.PORT || PORT, () => console.log('Server running on port: ', PORT));
+app.use((req, res) => {
+  res.status(404).json({ err: 'API NOT FOUND' });
+});
+
+app.listen(process.env.PORT || PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`),
+);
